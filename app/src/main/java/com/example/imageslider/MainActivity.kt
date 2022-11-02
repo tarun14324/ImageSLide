@@ -4,6 +4,7 @@ package com.example.imageslider
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.viewpager2.widget.CompositePageTransformer
@@ -31,7 +32,9 @@ class MainActivity : AppCompatActivity() {
                 R.drawable.seven,
                 R.drawable.eight,
             ), binding.viewPager2
-        )
+        ) {
+            Toast.makeText(this, "$it", Toast.LENGTH_SHORT).show()
+        }
         binding.viewPager2.offscreenPageLimit = 3
         binding.viewPager2.adapter = adapter
         setUpTransformer()
@@ -40,7 +43,7 @@ class MainActivity : AppCompatActivity() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
                 handler.removeCallbacks(runnable)
-                handler.postDelayed(runnable, 2000)
+                handler.postDelayed(runnable, 1500)
             }
 
         })
@@ -56,7 +59,7 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
 
-        handler.postDelayed(runnable, 2000)
+        handler.postDelayed(runnable, 1500)
     }
 
     private val runnable = Runnable {

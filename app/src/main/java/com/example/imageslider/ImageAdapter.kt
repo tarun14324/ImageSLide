@@ -8,12 +8,16 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.example.imageslider.databinding.ItemImageSlideViewBinding
 
-class ImageAdapter(val imageList: ArrayList<Int>, val viewPager: ViewPager2) :
+class ImageAdapter(
+    val imageList: ArrayList<Int>, val viewPager: ViewPager2,
+    private val onItemClicked: (Int) -> Unit
+) :
     RecyclerView.Adapter<ImageAdapter.ImageViewHolder>() {
     private lateinit var binding: ItemImageSlideViewBinding
 
     class ImageViewHolder(view: ItemImageSlideViewBinding) : RecyclerView.ViewHolder(view.root) {
         val image = view.image
+        val card = view.cardView
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageViewHolder {
@@ -29,6 +33,9 @@ class ImageAdapter(val imageList: ArrayList<Int>, val viewPager: ViewPager2) :
     @SuppressLint("NotifyDataSetChanged")
     override fun onBindViewHolder(holder: ImageViewHolder, position: Int) {
         holder.image.setImageResource(imageList[position])
+        holder.card.setOnClickListener {
+            onItemClicked(viewPager.currentItem)
+        }
         if (position == imageList.size - 1) {
             viewPager.post {
                 imageList.addAll(imageList)

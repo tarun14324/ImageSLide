@@ -5,12 +5,12 @@ plugins {
 
 android {
     namespace 'com.example.imageslider'
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.example.imageslider"
         minSdk 21
-        targetSdk 32
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
@@ -30,7 +30,7 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    buildFeatures{
+    buildFeatures {
         dataBinding = true
     }
 }
