@@ -11,6 +11,7 @@ import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
 import com.example.imageslider.databinding.ActivityMainBinding
+import kotlin.time.days
 
 
 class MainActivity : AppCompatActivity() {
@@ -33,7 +34,7 @@ class MainActivity : AppCompatActivity() {
                 R.drawable.eight,
             ), binding.viewPager2
         ) {
-            Toast.makeText(this, "$it", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
         }
         binding.viewPager2.offscreenPageLimit = 3
         binding.viewPager2.adapter = adapter

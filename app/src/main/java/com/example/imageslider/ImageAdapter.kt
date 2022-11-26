@@ -9,7 +9,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.example.imageslider.databinding.ItemImageSlideViewBinding
 
 class ImageAdapter(
-    val imageList: ArrayList<Int>, val viewPager: ViewPager2,
+    private val imageList: ArrayList<Int>, val viewPager: ViewPager2,
     private val onItemClicked: (Int) -> Unit
 ) :
     RecyclerView.Adapter<ImageAdapter.ImageViewHolder>() {
